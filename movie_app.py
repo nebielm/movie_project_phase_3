@@ -5,17 +5,19 @@ import pycountry
 
 
 class MovieApp:
+    """MovieApplication Class, which defines the way how it is going to be used by user"""
     API_KEY = "2f8ef11f"
     API_URL = f"https://www.omdbapi.com/?apikey={API_KEY}&t="
     FLAGS_API_BASE = f"https://flagsapi.com/"
 
     def __init__(self, storage):
+        """initializes which storage it is going to use"""
         self._storage = storage
 
     def menu(self):
         """Create and print the menu for user to choose between
-           different commands and let the user choose a command
-           through input."""
+        different commands and let the user choose a command
+        through input."""
         print("*" * 10, " My Movies Database ", "*" * 10, "\n")
         menu_list = [
             {"show": "Exit", "execute": lambda: print("Bye!")},
@@ -52,8 +54,8 @@ class MovieApp:
 
     def _command_add_movie(self):
         """Asks user for new movie, checks if movie is already in
-           database and adds new movie with
-           rating and year to Database."""
+        database and adds new movie with
+        rating and year to Database."""
         movies = self._storage.read_file()
         while True:
             new_title = input("Add movie name: ")
@@ -92,7 +94,7 @@ class MovieApp:
 
     def _command_delete_movie(self):
         """Asks user for movie to delete, checks if movie is in
-           database and deletes it."""
+        database and deletes it."""
         movies = self._storage.read_file()
         while True:
             delete_movie_input = input("Which movie should be deleted? ")
@@ -112,7 +114,7 @@ class MovieApp:
 
     def _command_update_movie(self):
         """Asks user which movie should be updated, check is movie is
-           in database and updates movie with new info's."""
+        in database and updates movie with new info's."""
         movies = self._storage.read_file()
         while True:
             update_movie_input = input("Which movie should be updated? ")
@@ -137,8 +139,8 @@ class MovieApp:
 
     def _command_status(self):
         """Calculates average rating and median from rating
-           find out which movie is best and worst according to ratings,
-           and prints the new gained information."""
+        find out which movie is best and worst according to ratings,
+        and prints the new gained information."""
         movies = self._storage.read_file()
         rating_list = []
         for movie, info in movies.items():
@@ -205,12 +207,14 @@ class MovieApp:
         for movie in movies:
             movie_grid += (f'           <li>\n'
                            f'               <div class="movie">\n'
-                           f'                   <a href="https://www.imdb.com/title/{movies[movie]["imdbID"]}/" target="_blank">\n'
+                           f'                   <a href="https://www.imdb.com/title/{movies[movie]["imdbID"]}'
+                           f'/" target="_blank">\n'
                            f'                       <img class="movie-poster" src="{movies[movie]["poster"]}" '
                            f'alt="{movie}" title="{movies[movie].get("note", "N/A")}">\n'
                            f'                   </a>\n'
                            f'                   <div class="movie-title">{movie}\n'
-                           f'                       <img src="{self.FLAGS_API_BASE + movies[movie]["origin/s"][0] + "/shiny/16.png"}" alt="{movies[movie]["origin/s"][0]}">\n'
+                           f'                       <img src="{self.FLAGS_API_BASE + movies[movie]["origin/s"][0] + 
+                                                               "/shiny/16.png"}" alt="{movies[movie]["origin/s"][0]}">\n'
                            f'                   </div>\n'
                            f'                   <div class="movie-year">{movies[movie]["year"]}</div>\n'
                            f'                   <div class ="rating-bar">\n'

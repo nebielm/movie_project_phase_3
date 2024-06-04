@@ -3,11 +3,13 @@ import ast
 
 
 class StorageCsv(IStorage):
+    """handles Storage of a csv file"""
     def __init__(self, file_path):
+        """initiates file_path/name when class gets created"""
         self.file_path = file_path
 
     def read_file(self):
-        """Reads a Json file and returns it as a python object."""
+        """Reads a Csv file and returns it as a dict in dict python object."""
         with open(self.file_path, "r") as csv_data:
             movie_data = csv_data.read()
         movies_list = [line.strip() for line in movie_data.split("\n") if line.strip()]
@@ -31,7 +33,7 @@ class StorageCsv(IStorage):
         return dict_movie_data
 
     def write_file(self, python_obj):
-        """Converts Python object to a json string and writes a file."""
+        """Converts Python object to a csv string and writes a csv file."""
         csv_obj = "title;rating;year;poster;imdbID;origin/s;note\n"
         for title, info in python_obj.items():
             csv_obj += (f"{title};{info["rating"]};{info["year"]};"

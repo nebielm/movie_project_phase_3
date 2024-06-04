@@ -3,17 +3,19 @@ import json
 
 
 class StorageJson(IStorage):
+    """handles storage of a json file"""
     def __init__(self, file_path):
+        """initiates file_path/name when class gets created"""
         self.file_path = file_path
 
     def read_file(self):
-        """Reads a Json file and returns it as a python object."""
+        """Reads a Json file and returns it as a dict in dict python object."""
         with open(self.file_path, "r") as json_data:
             movie_data = json.load(json_data)
         return movie_data
 
     def write_file(self, python_obj):
-        """Converts Python object to a json string and writes a file."""
+        """Converts Python object to a json string and writes a json file."""
         with open(self.file_path, "w") as json_data:
             json.dump(python_obj, json_data)
 
