@@ -36,10 +36,10 @@ class StorageCsv(IStorage):
         """Converts Python object to a csv string and writes a csv file."""
         csv_obj = "title;rating;year;poster;imdbID;origin/s;note\n"
         for title, info in python_obj.items():
-            csv_obj += (f"{title};{info["rating"]};{info["year"]};"
-                        f"{info["poster"]};{info["imdbID"]};{info["origin/s"]}")
+            csv_obj += (f"{title};{info['rating']};{info['year']};"
+                        f"{info['poster']};{info['imdbID']};{info['origin/s']}")
             if len(info) == 6:
-                csv_obj += f";{info["note"]}\n"
+                csv_obj += f";{info['note']}\n"
             else:
                 csv_obj += "\n"
         with open(self.file_path, "w") as csv_file:
