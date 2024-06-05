@@ -79,7 +79,7 @@ class MovieApp:
             input("\nTo return to menu press Enter.")
             return movies
         elif movie_dict["Title"] in movies:
-            print(f"{movie_dict["Title"]} already in Database")
+            print(f"{movie_dict['Title']} already in Database")
             input("\nTo return to menu press Enter.")
             return movies
         origin = movie_dict["Country"].split(",")
