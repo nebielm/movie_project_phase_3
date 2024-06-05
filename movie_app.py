@@ -2,13 +2,14 @@ from statistics import median
 from random import choice
 import requests
 import pycountry
+import os
 
 
 class MovieApp:
     """MovieApplication Class, which defines the way how it is going to be used by user"""
-    API_KEY = "2f8ef11f"
-    API_URL = f"https://www.omdbapi.com/?apikey={API_KEY}&t="
-    FLAGS_API_BASE = f"https://flagsapi.com/"
+    API_KEY = os.getenv("API_KEY")
+    API_URL = os.getenv("API_URL")
+    FLAGS_API_BASE = os.getenv("FLAGS_API_BASE")
 
     def __init__(self, storage):
         """initializes which storage it is going to use"""
