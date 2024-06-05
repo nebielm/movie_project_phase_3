@@ -2,12 +2,14 @@ from statistics import median
 from random import choice
 import requests
 import pycountry
+import load_dotenv
 import os
+
+load_dotenv.load_dotenv()
 
 
 class MovieApp:
     """MovieApplication Class, which defines the way how it is going to be used by user"""
-    API_KEY = os.getenv("API_KEY")
     API_URL = os.getenv("API_URL")
     FLAGS_API_BASE = os.getenv("FLAGS_API_BASE")
 
