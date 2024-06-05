@@ -216,8 +216,8 @@ class MovieApp:
                            f'alt="{movie}" title="{movies[movie].get("note", "N/A")}">\n'
                            f'                   </a>\n'
                            f'                   <div class="movie-title">{movie}\n'
-                           f'                       <img src="{self.FLAGS_API_BASE + movies[movie]["origin/s"][0] + 
-                                                               "/shiny/16.png"}" alt="{movies[movie]["origin/s"][0]}">\n'
+                           f'                       <img src="{self.FLAGS_API_BASE + movies[movie]["origin/s"][0] + "/shiny/16.png"}"'
+                           f' alt="{movies[movie]["origin/s"][0]}">\n'
                            f'                   </div>\n'
                            f'                   <div class="movie-year">{movies[movie]["year"]}</div>\n'
                            f'                   <div class ="rating-bar">\n'
